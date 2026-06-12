@@ -13,23 +13,48 @@
     .attribution { font-size: 0.6875rem; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-
-  Personal best: <!-- PB --> WPM
-
-  WPM: <!-- WPM -->
-  Accuracy: <!-- Accuracy -->
-  Time: <!-- Time -->
-
-  Difficulty:
-  Easy
-  Medium
-  Hard
-
-  Mode:
-  Timed (60s)
-  Passage
+<body class="min-h-screen bg-[#121212]">
+  <header class="flex p-2 justify-between mb-5">
+    <div class="flex items-center">
+      <img src="./assets/images/logo-small.svg" alt="">
+    </div>
+    <div class="flex items-center gap-2">
+      <img src="./assets/images/icon-personal-best.svg" alt="">
+      <p class="text-white" id="personalBest"><span class="text-[#959597]">Best: </span>92WPM</p>
+    </div>
+  </header>
+  <div>
+    <div class="text-white">
+      <div class="flex justify-center mb-4">
+        <div class="border-r-1 border-[#959597]/50 flex flex-col justify-center items-center flex-1">
+          <p class="text-[#959597]">WPM:</p>
+          <p class="text-2xl font-bold" id="currentWPM">0</p>
+        </div>
+        <div class="border-r-1  border-[#959597]/50 flex flex-col justify-center items-center flex-1">
+          <p class="text-[#959597]">Accuracy:</p>
+          <p class="text-2xl font-bold" id="currentAccuracy">100%</p>
+        </div>
+        <div class="flex flex-col justify-center items-center flex-1">
+          <p class="text-[#959597]">Time:</p>
+          <p class="text-2xl font-bold" id="Time">0:60</p>
+        </div>
+      </div>
+      <div class="flex px-2">
+        <select class="flex-1 text-center border-1 border-[#] rounded-md" name="" id="diffculty">
+          <option value="hard">Easy</option>
+          <option value="hard">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+         <select class="flex-1 text-center" name="" id="diffculty">
+          <option value="60s">Timed(60s)</option>
+          <option value="45s">Timed(45s)</option>
+          <option value="30s">Timed(30s)</option>
+        </select>
+      </div>
+    </div>
+  </div>
 
   <!-- Passage -->
 
