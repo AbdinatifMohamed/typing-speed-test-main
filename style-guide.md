@@ -16,7 +16,7 @@ The designs were created to the following widths:
 - **Neutral 900**: hsl(0, 0%, 7%) / #121212
 - **Neutral 800**: hsl(0, 0%, 15%) / #262626
 - **Neutral 500**: hsl(240, 3%, 46%) / #727279
-- **Neutral 400**: hsl(240, 1%, 59%) / #959597
+- **Neutral 400**: hsl(240, 1%, 59%) / 
 - **Neutral 0**: hsl(0, 0%, 100%) / #FFFFFF
 
 ### Blue

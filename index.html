@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
   
   <title>Frontend Mentor | Typing Speed Test</title>
 
@@ -12,10 +15,21 @@
   <style>
     .attribution { font-size: 0.6875rem; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
+
+    .select-style {
+        appearance: none;
+        background: url(./assets/images/icon-down-arrow.svg);
+        background-repeat: no-repeat;
+        background-position: right 5px center;
+    }
+
+    .font-main {
+      font-family: "Sora", sans-serif;
+    }
   </style>
    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="min-h-screen bg-[#121212]">
+<body class="h-screen bg-[#121212] font-main flex flex-col overflow-hidden">
   <header class="flex p-2 justify-between mb-5">
     <div class="flex items-center">
       <img src="./assets/images/logo-small.svg" alt="">
@@ -25,8 +39,8 @@
       <p class="text-white" id="personalBest"><span class="text-[#959597]">Best: </span>92WPM</p>
     </div>
   </header>
-  <div>
-    <div class="text-white">
+  <div class="flex-1 flex flex-col min-h-0">
+    <div class="text-white border-b-1 border-[#959597] pb-3 mx-2">
       <div class="flex justify-center mb-4">
         <div class="border-r-1 border-[#959597]/50 flex flex-col justify-center items-center flex-1">
           <p class="text-[#959597]">WPM:</p>
@@ -41,42 +55,56 @@
           <p class="text-2xl font-bold" id="Time">0:60</p>
         </div>
       </div>
-      <div class="flex px-2">
-        <select class="flex-1 text-center border-1 border-[#] rounded-md" name="" id="diffculty">
-          <option value="hard">Easy</option>
-          <option value="hard">Medium</option>
-          <option value="hard">Hard</option>
+      <div class="flex gap-2">
+        <select class="flex-1 text-center border-1 border-[#959597] rounded-md select-style" name="" id="diffculty">
+          <option class="bg-[#262626]" value="easy">Easy</option>
+          <option class="bg-[#262626]" value="medium">Medium</option>
+          <option class="bg-[#262626]" value="hard">Hard</option>
         </select>
-         <select class="flex-1 text-center" name="" id="diffculty">
-          <option value="60s">Timed(60s)</option>
-          <option value="45s">Timed(45s)</option>
-          <option value="30s">Timed(30s)</option>
+         <select class="flex-1 text-center border-1 border-[#959597] rounded-md select-style" name="" id="diffculty">
+          <option class="bg-[#262626]" value="60s">Timed(60s)</option>
+          <option class="bg-[#262626]" value="45s">Timed(45s)</option>
+          <option class="bg-[#262626]" value="30s">Timed(30s)</option>
         </select>
       </div>
     </div>
+    <div class="flex-1 flex min-h-0 mx-3">
+      <div class="flex flex-col items-center flex-1 min-h-0 gap-10">
+        <div class="h-[80%] overflow-hidden min-h-0 py-9 ">
+          <p id="textbox" class=" text-[#959597]  text-[2rem] ">The archaeological expedition unearthed artifacts that
+            complicated prevailing theories about Bronze Age trade networks. Obsidian from Anatolia, lapis lazuli from
+            Afghanistan, and amber from the Baltic—all discovered in a single Mycenaean tomb—suggested commercial
+            connections far more extensive than previously hypothesized. "We've underestimated ancient peoples' navigational
+            capabilities and their appetite for luxury goods," the lead researcher observed. "Globalization isn't as modern
+            as we assume."</p>
+        </div>
+    
+        <button class="text-white flex bg-[#262626] items-center gap-2 p-2 rounded-md ">
+          <p>Restart Test</p>
+          <img class="h-4" src="./assets/images/icon-restart.svg" alt="">
+        </button>
+      </div>
+    </div>
   </div>
-
-  <!-- Passage -->
+<!-- 
+  -- Passage 
 
   Start Typing Test
   Or click the text and start typing
 
-  <!-- Test Complete Start -->
+  -- Test Complete Start 
 
   Test Complete!
   Solid run. Keep pushing to beat your high score.
 
-  WPM: <!-- WPM -->
-  Accuracy: <!-- Accuracy -->
-  Characters: <!-- Correct/Incorrect -->
+  WPM: -- WPM 
+  Accuracy: -- Accuracy 
+  Characters: -- Correct/Incorrect 
 
   Go Again
   
-  <!-- Test Complete End -->
-
-  <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </footer>
+  -- Test Complete End 
+-->
+  
 </body>
 </html>
