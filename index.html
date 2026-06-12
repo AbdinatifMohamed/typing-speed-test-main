@@ -52,26 +52,26 @@
         </div>
         <div class="flex flex-col justify-center items-center flex-1">
           <p class="text-[#959597]">Time:</p>
-          <p class="text-2xl font-bold" id="Time">0:60</p>
+          <p class="text-2xl font-bold" id="currentTime">0:60</p>
         </div>
       </div>
       <div class="flex gap-2">
-        <select class="flex-1 text-center border-1 border-[#959597] rounded-md select-style" name="" id="diffculty">
+        <select class="flex-1 text-center border-1 border-[#959597] rounded-md select-style" name="" id="selectedDiffculty">
           <option class="bg-[#262626]" value="easy">Easy</option>
           <option class="bg-[#262626]" value="medium">Medium</option>
           <option class="bg-[#262626]" value="hard">Hard</option>
         </select>
-         <select class="flex-1 text-center border-1 border-[#959597] rounded-md select-style" name="" id="diffculty">
-          <option class="bg-[#262626]" value="60s">Timed(60s)</option>
-          <option class="bg-[#262626]" value="45s">Timed(45s)</option>
-          <option class="bg-[#262626]" value="30s">Timed(30s)</option>
+         <select class="flex-1 text-center border-1 border-[#959597] rounded-md select-style" name="" id="selectedTime">
+          <option class="bg-[#262626]" value="60">Timed(60s)</option>
+          <option class="bg-[#262626]" value="45">Timed(45s)</option>
+          <option class="bg-[#262626]" value="30">Timed(30s)</option>
         </select>
       </div>
     </div>
-    <div class="flex-1 flex min-h-0 mx-3">
+    <div class="relative flex-1 flex min-h-0 mx-3">
       <div class="flex flex-col items-center flex-1 min-h-0 gap-10">
         <div class="h-[80%] overflow-hidden min-h-0 py-9 ">
-          <p id="textbox" class=" text-[#959597]  text-[2rem] ">The archaeological expedition unearthed artifacts that
+          <p id="textBox" class=" text-[#959597]  text-[2rem] ">The archaeological expedition unearthed artifacts that
             complicated prevailing theories about Bronze Age trade networks. Obsidian from Anatolia, lapis lazuli from
             Afghanistan, and amber from the Baltic—all discovered in a single Mycenaean tomb—suggested commercial
             connections far more extensive than previously hypothesized. "We've underestimated ancient peoples' navigational
@@ -79,10 +79,19 @@
             as we assume."</p>
         </div>
     
-        <button class="text-white flex bg-[#262626] items-center gap-2 p-2 rounded-md ">
+        <button class="hidden text-white flex bg-[#262626] items-center gap-2 p-2 rounded-md"
+        
+        id="restartButton"
+        >
           <p>Restart Test</p>
           <img class="h-4" src="./assets/images/icon-restart.svg" alt="">
         </button>
+      </div>
+      <div class="absolute flex-1 flex flex-col backdrop-blur-md h-full w-full justify-center items-center gap-4">
+          <button class="px-3 py-2 bg-[#1A7DFF] rounded-md text-white" 
+          id="startButton"
+          >Start Typing Test</button>
+          <p class="text-white">Or click the text and start typing</p>
       </div>
     </div>
   </div>
@@ -105,6 +114,6 @@
   
   -- Test Complete End 
 -->
-  
+  <script src="index.js"></script>
 </body>
 </html>
