@@ -26,6 +26,11 @@
     .font-main {
       font-family: "Sora", sans-serif;
     }
+    .box-shadow {
+      box-shadow: 0 0 0 7px hsla(140, 57%, 37%, 0.575),
+      0 0 5px 14px hsl(140 63% 57% / .15);
+
+    }
   </style>
    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -39,7 +44,7 @@
       <p class="text-white" id="personalBest"><span class="text-[#959597]">Best: </span>92WPM</p>
     </div>
   </header>
-  <div class="flex-1 flex flex-col min-h-0">
+  <div class="hidden flex-1 flex flex-col min-h-0">
     <div class="text-white border-b-1 border-[#959597] pb-3 mx-2">
       <div class="flex justify-center mb-4">
         <div class="border-r-1 border-[#959597]/50 flex flex-col justify-center items-center flex-1">
@@ -70,8 +75,8 @@
     </div>
     <div class="relative flex-1 flex min-h-0 mx-3">
       <div class="flex flex-col items-center flex-1 min-h-0 gap-10">
-        <div class="h-[80%] overflow-hidden min-h-0 py-9 ">
-          <p id="textBox" class=" text-[#959597]  text-[2rem] ">The archaeological expedition unearthed artifacts that
+        <div class="h-[80%] overflow-hidden min-h-0 py-9 " id="textBoxWrapper">
+          <p id="textBox" class="relative text-[#959597]  text-[2rem] ">The archaeological expedition unearthed artifacts that
             complicated prevailing theories about Bronze Age trade networks. Obsidian from Anatolia, lapis lazuli from
             Afghanistan, and amber from the Baltic—all discovered in a single Mycenaean tomb—suggested commercial
             connections far more extensive than previously hypothesized. "We've underestimated ancient peoples' navigational
@@ -80,7 +85,6 @@
         </div>
     
         <button class="hidden text-white flex bg-[#262626] items-center gap-2 p-2 rounded-md"
-        
         id="restartButton"
         >
           <p>Restart Test</p>
@@ -97,11 +101,35 @@
       </div>
     </div>
   </div>
-<!-- 
-  -- Passage 
+  <div class="flex-1 flex flex-col text-white items-stretch px-2 gap-10">
+      <div class="flex flex-col items-center justify-center">
+        <img class="mb-7 rounded-full box-shadow" src="./assets/images/icon-completed.svg"  alt="">
+        <h2 class="font-bold text-2xl mb-2">Test Complete!</h2>
+        <p class="text-[#727279] text-lg text-center leading-5">Solid run. Keep pushing to beat your score.</p>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div class="border-1 border-[#727279]/50 rounded-md py-5 px-4 text-lg">
+          <p class="text-[#727279]">WPM:</p>
+          <p id="resultWPM" class="font-bold">85</p>
+        </div>
+        <div class="border-1 border-[#727279]/50 rounded-md py-5 px-4 text-lg">
+          <p class="text-[#727279]">WPM:</p>
+          <p id="resultWPM" class="font-bold">85</p>
+        </div>
+        <div class="border-1 border-[#727279]/50 rounded-md py-5 px-4 text-lg">
+          <p class="text-[#727279]">WPM:</p>
+          <p id="resultWPM" class="font-bold">85</p>
+        </div>
+      </div>
+      <button class="flex bg-white text-[#121212] self-start py-3 px-3 justify-center items-center gap-2 rounded-md mx-auto">
+        <p class="font-bold">Go Again</p>
+        <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="#121212" d="M1.563 1.281h.949c.246 0 .422.211.422.457l-.07 3.446a8.6 8.6 0 0 1 7.277-3.868c4.816 0 8.718 3.938 8.718 8.72-.035 4.816-3.937 8.683-8.718 8.683a8.86 8.86 0 0 1-5.871-2.215.446.446 0 0 1 0-.633l.703-.703c.14-.14.386-.14.562 0 1.23 1.09 2.813 1.723 4.606 1.723A6.88 6.88 0 0 0 17.03 10c0-3.797-3.093-6.89-6.89-6.89-2.813 0-5.203 1.687-6.293 4.078l4.43-.106c.245 0 .456.176.456.422v.95c0 .245-.21.421-.421.421h-6.75a.406.406 0 0 1-.422-.422v-6.75c0-.21.175-.422.422-.422"/></svg>
+      </button>
+      <img class="absolute h-8 right-10 bottom-10"  src="./assets/images/pattern-star-1.svg" alt="">
+      <img class="absolute h-5 left-x top-30"  src="./assets/images/pattern-star-2.svg" alt="">
+  </div>
 
-  Start Typing Test
-  Or click the text and start typing
+<!-- 
 
   -- Test Complete Start 
 

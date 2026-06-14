@@ -7,6 +7,9 @@ const selectedDiffculty = document.getElementById("selectedDiffculty");
 const selectedTime= document.getElementById("selectedTime");
 const textBox = document.getElementById("textBox");
 const startscreen = document.getElementById("startscreen");
+const containerDiv = document.getElementById('textBoxWrapper');
+const divHeight = containerDiv.clientHeight; 
+const totalTextHeight = textBox.scrollHeight;
 
 
 let gameStarted = false;
@@ -42,6 +45,8 @@ const setupGame = async () => {
     currentAccuracy.textContent = "100%";
     time = selectedTime.value;
     pointer = 0;
+    typed = 0;
+    correctTyped = 0;
     try {
         const response = await fetch('./data.json');
 
@@ -56,7 +61,12 @@ const setupGame = async () => {
     const list = listWords[selectedDiffculty.value];
     currentString = list[Math.floor(Math.random() * list.length)].text;
     textBox.innerHTML = currentString.split('').map(letter => `<span>${letter}</span>`).join('');
+    textBox.querySelectorAll('span')[0].style.backgroundColor = "rgb(149 149 151 / 40%)";
+    textBox.querySelector('span:last-of-type').style.backgroundColor = "transparent";
     startscreen.style.display = "none";
+    restartButton.classList.add("hidden");
+    restartButton.removeEventListener("click", onRestart)
+     textBox.style.transform = `translateY(0)`;
     startGame();
 }
 
@@ -64,22 +74,39 @@ const startGame = () => {
     gameStarted = true;
     document.addEventListener("keydown", onType);
     createBackgroundTimer();
-    restartButton.style.display = "None";
 }
 
+
+const onRestart = () => {
+    setupGame();
+}
 
 const endGame = () => {
     clearInterval(timeId);
     document.removeEventListener("keydown", onType);
     startTime = Date.now();
-    restartButton.style.display = "block";
+    restartButton.classList.remove("hidden");
+    restartButton.addEventListener("click", onRestart);
 }
 
 
 const onType = (e) => {
     const spans = textBox.querySelectorAll('span');
 
+    if (e.key.length !== 1) {
+        return;
+    }
+    
+    
     if (pointer < spans.length){
+        const spanOffset = spans[pointer].offsetTop;
+        console.log("offsetTop", spanOffset);
+        console.log("divHeight", divHeight);
+        if (spanOffset > divHeight * 0.85) {
+            const overflow = spanOffset - (divHeight * 0.5);
+            textBox.style.transform =  `translateY(-${overflow}px)`
+        }
+
         if (e.key === spans[pointer].innerText){
             spans[pointer].style.color = "green";
             correctTyped++;
@@ -91,7 +118,9 @@ const onType = (e) => {
     }
     currentAccuracy.innerText =( (correctTyped/typed) * 100).toFixed(2) + "%"
     typed++;
+    spans[pointer].style.backgroundColor = "transparent";
     pointer++;
+    spans[pointer].style.backgroundColor = "rgb(149 149 151 / 40%)";
 }
 
 function updateWPM() {
