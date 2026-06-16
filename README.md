@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Solution Site](https://www.frontendmentor.io/solutions/responsive-typing-speed-test-sgjeZ5yOEN)
 - Live Site URL: [Live Site](https://abdinatifmohamed.github.io/typing-speed-test-main/)
 
 ## My process
