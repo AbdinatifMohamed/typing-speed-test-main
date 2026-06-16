@@ -13,8 +13,6 @@ This is a solution to the [Typing Speed Test challenge on Frontend Mentor](https
 - [Author](#author)
 
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
