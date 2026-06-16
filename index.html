@@ -37,7 +37,8 @@
 <body class="h-screen bg-[#121212] font-main flex flex-col overflow-hidden">
   <header class="flex p-2 justify-between mb-5">
     <div class="flex items-center">
-      <img src="./assets/images/logo-small.svg" alt="">
+      <img src="./assets/images/logo-small.svg" class="lg:hidden" alt="">
+      <img src="./assets/images/logo-large.svg" class="hidden lg:block" alt="">
     </div>
     <div class="flex items-center gap-2">
       <img src="./assets/images/icon-personal-best.svg" alt="">
@@ -47,32 +48,50 @@
   <div class="flex-1 flex flex-col min-h-0"
     id="main"
   >
-    <div class="text-white border-b-1 border-[#959597] pb-3 mx-2">
-      <div class="flex justify-center mb-4">
-        <div class="border-r-1 border-[#959597]/50 flex flex-col justify-center items-center flex-1">
-          <p class="text-[#959597]">WPM:</p>
-          <p class="text-2xl font-bold" id="currentWPM">0</p>
+    <div class="text-white border-b-1 border-[#959597] pb-3 mx-2 lg:flex lg:pb-2">
+      <div class="flex lg:flex-1 justify-center mb-4 lg: gap lg:mb-0">
+        <div class="border-r-1 border-[#959597]/50 flex flex-col justify-center items-center flex-1 lg:flex-row lg:gap-1">
+          <p class="text-[#959597] lg:text-sm">WPM:</p>
+          <p class="text-2xl lg:text-sm font-bold" id="currentWPM">0</p>
         </div>
-        <div class="border-r-1  border-[#959597]/50 flex flex-col justify-center items-center flex-1">
-          <p class="text-[#959597]">Accuracy:</p>
-          <p class="text-2xl font-bold" id="currentAccuracy">100%</p>
+        <div class="border-r-1  border-[#959597]/50 flex flex-col justify-center items-center flex-1 lg:flex-row lg:gap-1">
+          <p class="text-[#959597] lg:text-sm">Accuracy:</p>
+          <p class="text-2xl lg:text-sm font-bold" id="currentAccuracy">100%</p>
         </div>
-        <div class="flex flex-col justify-center items-center flex-1">
-          <p class="text-[#959597]">Time:</p>
-          <p class="text-2xl font-bold" id="currentTime">0:60</p>
+        <div class="flex flex-col justify-center items-center flex-1 lg:flex-row lg:gap-1">
+          <p class="text-[#959597] lg:text-sm">Time:</p>
+          <p class="text-2xl lg:text-sm font-bold" id="currentTime">0:60</p>
         </div>
       </div>
-      <div class="flex gap-2">
-        <select class="flex-1 text-center border-1 border-[#959597] rounded-md select-style" name="" id="selectedDiffculty">
+      <div class="flex lg:flex-1 gap-2">
+        <select class="flex-1 lg:hidden text-center border-1 border-[#959597] rounded-md select-style" name="" id="selectedDiffculty">
           <option class="bg-[#262626]" value="easy">Easy</option>
           <option class="bg-[#262626]" value="medium">Medium</option>
           <option class="bg-[#262626]" value="hard">Hard</option>
         </select>
-         <select class="flex-1 text-center border-1 border-[#959597] rounded-md select-style" name="" id="selectedTime">
+         <select class="flex-1 lg:hidden text-center border-1 border-[#959597] rounded-md select-style" name="" id="selectedTime">
           <option class="bg-[#262626]" value="60">Timed(60s)</option>
-          <option class="bg-[#262626]" value="45">Timed(45s)</option>
-          <option class="bg-[#262626]" value="30">Timed(30s)</option>
+          <option class="bg-[#262626]" value="noTimer">Passage</option>
         </select>
+        <div class="hidden flex-1 lg:block lg:flex lg:items-center">
+            <label class="mr-2">Difficulty:</label>
+            <div class="flex gap-2">
+                <button class="rounded-md border-1 border-[#4DA6FF] text-[#4DA6FF] py-1 px-2 " id="diffcultyButtons" data-value="easy">Easy</button>
+                <button class="rounded-md border-1 border-[#959597] py-1 px-2" id="diffcultyButtons" data-value="medium">Medium</button>
+                <button class="rounded-md border-1 border-[#959597] py-1 px-2" id="diffcultyButtons" data-value="hard">Hard</button>
+            </div>
+
+
+        </div>
+        <div class="hidden flex-1 lg:block lg:flex lg:items-center">
+            <label class="mr-2">Mode:</label>
+            <div class="flex gap-2">
+                <button class="rounded-md border-1 b py-1 px-2  border-[#4DA6FF] text-[#4DA6FF]" id="modeButtons" data-value="60">Timed(60s)</button>
+                <button class="rounded-md border-1 border-[#959597] py-1 px-2" id="modeButtons" data-value="noTimer" >Passage</button>
+            </div>
+
+
+        </div>
       </div>
     </div>
     <div class="relative flex-1 flex min-h-0 mx-3">
@@ -115,16 +134,16 @@
         id="resultDesc"
         >Solid run. Keep pushing to beat your score.</p>
       </div>
-      <div class="flex flex-col gap-4">
-        <div class="border-1 border-[#727279]/50 rounded-md py-5 px-4 text-lg">
+      <div class="flex flex-col gap-4 lg:flex-row lg:px-[10rem]">
+        <div class="border-1 border-[#727279]/50 rounded-md py-5 px-4 text-lg lg:flex-1">
           <p class="text-[#727279]">WPM:</p>
           <p id="resultWPM" class="font-bold text-xl"></p>
         </div>
-        <div class="border-1 border-[#727279]/50 rounded-md py-5 px-4 text-lg">
+        <div class="border-1 border-[#727279]/50 rounded-md py-5 px-4 text-lg lg:flex-1">
           <p class="text-[#727279]">ACCURACY:</p>
           <p id="resultAccuracy" class="font-bold text-xl text-[#D64C5A]"></p>
         </div>
-        <div class="border-1 border-[#727279]/50 rounded-md py-5 px-4 text-lg">
+        <div class="border-1 border-[#727279]/50 rounded-md py-5 px-4 text-lg lg:flex-1">
           <p class="text-[#727279]">CHARACTERS:</p>
           <p id="resultCharacters" class="font-bold text-xl"></p>
         </div>

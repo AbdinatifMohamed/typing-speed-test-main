@@ -24,6 +24,8 @@ const star = document.getElementById("star");
 const star2 = document.getElementById("star2");1
 
 let gameStarted = false;
+let mode = "60";
+let diffculty = "easy";
 let time = 0;
 let listWords = null;
 let typed = 0;
@@ -35,7 +37,8 @@ let startTime = Date.now();
 let result = 0;
 let WPM = 0;
 let firstGame = true;
-
+let diffultyButton = document.querySelectorAll("#diffcultyButtons")[0];
+let modeButton = document.querySelectorAll("#modeButtons")[0];
 
 const createBackgroundTimer = () => {
     timeId = setInterval(() => {
@@ -57,7 +60,7 @@ const createBackgroundTimer = () => {
 const setupGame = async () => {
     currentWPM.textContent = "0";
     currentAccuracy.textContent = "100%";
-    time = selectedTime.value;
+    time = 60;
     pointer = 0;
     typed = 0;
     correctTyped = 0;
@@ -73,7 +76,7 @@ const setupGame = async () => {
         
     }
 
-    const list = listWords[selectedDiffculty.value];
+    const list = listWords[diffculty];
     currentString = list[Math.floor(Math.random() * list.length)].text;
     textBox.innerHTML = currentString.split('').map(letter => `<span>${letter}</span>`).join('');
     textBox.querySelectorAll('span')[0].style.backgroundColor = "rgb(149 149 151 / 40%)";
@@ -89,7 +92,11 @@ const startGame = () => {
     gameStarted = true;
     startTime = Date.now();
     document.addEventListener("keydown", onType);
-    createBackgroundTimer();
+
+    if (mode === "60") {
+        createBackgroundTimer();
+    }
+    
 }
 
 
@@ -98,7 +105,10 @@ const onRestart = () => {
 }
 
 const endGame = () => {
-    clearInterval(timeId);
+    if (mode === "60") {
+        clearInterval(timeId);
+    }
+  
     document.removeEventListener("keydown", onType);
     main.classList.add("hidden");
 
@@ -147,6 +157,8 @@ const endGame = () => {
     if (firstGame){
         firstGame = false;
     }
+
+    gameStarted = false;
 
 }
 
@@ -200,7 +212,56 @@ function updateWPM() {
 }
 
 
+document.querySelectorAll("#diffcultyButtons").forEach((button) => {
+    if (gameStarted){return;}
+    diffculty = button.dataset.value;
+});
+
+document.querySelectorAll("#diffcultyButtons").forEach((button) => {
+    button.addEventListener("click", () => {
+        if (gameStarted){return;}
+
+        diffultyButton.classList.remove("text-[#4DA6FF]");
+        diffultyButton.classList.remove("border-[#4DA6FF]");
+        diffultyButton.classList.add("border-[#959597]");
+        
+        button.classList.add("text-[#4DA6FF]");
+        button.classList.add("border-[#4DA6FF]");
+        button.classList.remove("border-[#959597]");
+        diffculty = button.dataset.value;
+        diffultyButton = button;
+    })
+});
+
+document.querySelectorAll("#modeButtons").forEach((button) => {
+    button.addEventListener("click", () => {
+        if (gameStarted){return;}
+        
+        modeButton.classList.remove("text-[#4DA6FF]");
+        modeButton.classList.remove("border-[#4DA6FF]");
+        modeButton.classList.add("border-[#959597]");
+        
+        button.classList.add("text-[#4DA6FF]");
+        button.classList.add("border-[#4DA6FF]");
+        button.classList.remove("border-[#959597]");
+        mode = button.dataset.value;
+        modeButton = button;
+    })
+});
+
+
 startButton.addEventListener("click", () => {
     console.log("reached here.")
     setupGame();
+})
+
+
+selectedDiffculty.addEventListener("change", () => {
+    if (gameStarted){return;}
+    diffculty = selectedDiffculty.dataset.value;
+})
+
+selectedTime.addEventListener("change", () => {
+    if (gameStarted){return;}
+    mode = selectedTime.dataset.value;
 })
